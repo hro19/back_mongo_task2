@@ -13,6 +13,11 @@ const TaskSchema = new mongoose.Schema({
     trim: true,
     maxlength: [30, "日本語訳は30文字まで"],
   },
+  speech: {
+    type: String,
+    require: [true, "品詞を選択してください"],
+    trim: true,
+  },
   completed: {
     type: Boolean,
     default: false,
