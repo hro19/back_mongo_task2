@@ -5,13 +5,13 @@ const TaskSchema = new mongoose.Schema({
     type: String,
     require: [true, "英単語を入れてください"],
     trim: true,
-    maxlength: [20, "英単語は20文字まで"],
+    maxlength: [40, "英単語は40文字まで"],
   },
   jaName: {
     type: String,
     require: [true, "日本語訳を入れてください"],
     trim: true,
-    maxlength: [30, "日本語訳は30文字まで"],
+    maxlength: [40, "日本語訳は40文字まで"],
   },
   speech: {
     type: String,
