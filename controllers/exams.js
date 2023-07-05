@@ -24,8 +24,8 @@ const createExam = async(req, res) => {
 const getSingleExam = async (req, res) => {
   try {
     const id = req.params.id;
-    const singleTask = await Task.findOne({ _id: id }).exec();
-    res.status(200).json(singleTask);
+    const singleExam = await Exam.findOne({ _id: id }).exec();
+    res.status(200).json(singleExam);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -59,7 +59,7 @@ const deleteExam = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const deletedExam = await Task.findOneAndDelete({ _id: id }).exec();
+    const deletedExam = await Exam.findOneAndDelete({ _id: id }).exec();
 
     if (deletedExam) {
       res.status(200).json({ message: "正常に削除できました" });
