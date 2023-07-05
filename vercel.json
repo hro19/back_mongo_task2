@@ -12,8 +12,13 @@
       "dest": "app.js"
     },
     {
-      "src":"/api/v1/tasks/(.*)",
-      "headers":{"Location":"/api/v1/tasks/$1"},
+      "src": "/api/v1/tasks/(.*)",
+      "headers": { "Location": "/api/v1/tasks/$1" },
+      "dest": "app.js"
+    },
+    {
+      "src": "/api/v1/exams/(.*)",
+      "headers": { "Location": "/api/v1/exams/$1" },
       "dest": "app.js"
     },
     {
