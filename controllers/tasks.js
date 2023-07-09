@@ -71,8 +71,12 @@ const deleteTask = async (req, res) => {
 //特定タスクに基づく全Examの取得
 const getTaskExams = async (req, res) => {
   try {
-    const allExam = await Exam.find({});
-    res.status(200).json(allExam);
+    const id = req.params.id;
+
+    // const allExam = await Exam.find({}).exec();
+    const singleTaskExams = await Exam.find({ taskId: id }).exec();
+
+    res.status(200).json(singleTaskExams);
   } catch (err) {
     res.status(500).json(err);
   }
