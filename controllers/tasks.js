@@ -1,4 +1,5 @@
 const Task = require("../models/Task");
+const Exam = require("../models/Exam");
 
 //全てのタスク
 const getAllTasks = async (req, res) => {
@@ -11,13 +12,13 @@ const getAllTasks = async (req, res) => {
 };
 
 //タスク新規作成
-const createTask = async(req, res) => {
-    try {
+const createTask = async (req, res) => {
+  try {
     const createTask = await Task.create(req.body);
-        res.status(200).json(createTask);
-    } catch (err) {
-        res.status(500).json(err);
-    }
+    res.status(200).json(createTask);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
 
 //特定タスクの呼び出し
@@ -38,11 +39,7 @@ const updateTask = async (req, res) => {
     const update = req.body; // 更新するデータをリクエストボディから取得
     const options = { new: true }; // 更新後のタスクを取得するためのオプション
 
-    const updatedTask = await Task.findOneAndUpdate(
-      { _id: id },
-      update,
-      options
-    ).exec();
+    const updatedTask = await Task.findOneAndUpdate({ _id: id }, update, options).exec();
 
     if (updatedTask) {
       res.status(200).json(updatedTask);
@@ -71,10 +68,21 @@ const deleteTask = async (req, res) => {
   }
 };
 
+//特定タスクに基づく全Examの取得
+const getTaskExams = async (req, res) => {
+  try {
+    const allExam = await Exam.find({});
+    res.status(200).json(allExam);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   getAllTasks,
   createTask,
   getSingleTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  getTaskExams,
 };
